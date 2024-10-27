@@ -714,8 +714,8 @@ public class Zone {
                 Item backItem = replacedItems.getOrDefault(block.getBackItem(), block.getBackItem());
                 Item frontItem = replacedItems.getOrDefault(block.getFrontItem(), block.getFrontItem());
                 Item liquidItem = replacedItems.getOrDefault(block.getLiquidItem(), block.getLiquidItem());
-                int backMod = block.getBackMod();
-                int frontMod = block.getFrontMod();
+                int backMod = backItem.getMod() == block.getBackItem().getMod() ? block.getBackMod() : 0;
+                int frontMod = frontItem.getMod() == block.getFrontItem().getMod() ? block.getFrontMod() : 0;
                 int liquidMod = block.getLiquidMod();
                 
                 // Update base item if it isn't empty
