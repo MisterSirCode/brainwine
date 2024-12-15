@@ -18,7 +18,6 @@ public abstract class Product {
     protected final String name;
     protected final int cost;
     protected boolean available = true;
-    protected String category = "all";
     protected String description = "No description is available for this product.";
     protected ProductImage image = new ProductImage("inventory/air");
     
@@ -39,10 +38,6 @@ public abstract class Product {
     
     public boolean isAvailable() {
         return available;
-    }
-    
-    public String getCategory() {
-        return category;
     }
     
     public String getDescription() {

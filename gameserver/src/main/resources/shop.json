@@ -94,7 +94,6 @@
       "type": "zone",
       "name": "Private Mini World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched world! Get all the resources, loot, and exploration you'll ever need. You can even invite friends to come visit and settle with you... or just keep it all to yourself!",
       "image": [
         { "sprite": "shop/biome-normal" },
@@ -111,7 +110,6 @@
       "type": "zone",
       "name": "Private World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched world! Get all the resources, loot, and exploration you'll ever need. You can even invite friends to come visit and settle with you... or just keep it all to yourself!",
       "image": "shop/biome-normal",
       "zone": {
@@ -124,7 +122,6 @@
       "type": "zone",
       "name": "Private Large World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched world! Get all the resources, loot, and exploration you'll ever need. You can even invite friends to come visit and settle with you... or just keep it all to yourself!",
       "image": [
         { "sprite": "shop/biome-normal" },
@@ -141,7 +138,6 @@
       "type": "zone",
       "name": "Private Mini Hell World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched Hell world! Get your own expiator, plus a fresh bevy of fire salt, bloodstone, and a never-ending supply of ghostly ectoplasm.",
       "image": [
         { "sprite": "shop/biome-hell" },
@@ -158,7 +154,6 @@
       "type": "zone",
       "name": "Private Hell World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched Hell world! Get your own expiator, plus a fresh bevy of fire salt, bloodstone, and a never-ending supply of ghostly ectoplasm.",
       "image": "shop/biome-hell",
       "zone": {
@@ -171,7 +166,6 @@
       "type": "zone",
       "name": "Private Large Hell World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched Hell world! Get your own expiator, plus a fresh bevy of fire salt, bloodstone, and a never-ending supply of ghostly ectoplasm.",
       "image": [
         { "sprite": "shop/biome-hell" },
@@ -188,7 +182,6 @@
       "type": "zone",
       "name": "Private Mini Arctic World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched Arctic world! Discover sparkly diamonds, ice sculptures, and maybe even the rare jackalope head. Also includes all the snow and ice you'll ever need!",
       "image": [
         { "sprite": "shop/biome-arctic" },
@@ -205,7 +198,6 @@
       "type": "zone",
       "name": "Private Arctic World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched Arctic world! Discover sparkly diamonds, ice sculptures, and maybe even the rare jackalope head. Also includes all the snow and ice you'll ever need!",
       "image": "shop/biome-arctic",
       "zone": {
@@ -218,7 +210,6 @@
       "type": "zone",
       "name": "Private Large Arctic World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched Arctic world! Discover sparkly diamonds, ice sculptures, and maybe even the rare jackalope head. Also includes all the snow and ice you'll ever need!",
       "image": [
         { "sprite": "shop/biome-arctic" },
@@ -235,7 +226,6 @@
       "type": "zone",
       "name": "Private Mini Desert World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched Desert world! Get a fresh supply of beryllium ore, tumbleweeds, and cacti. You'll also find a steady supply of armadillos, scorpions, and sandworms to farm!",
       "image": [
         { "sprite": "shop/biome-desert" },
@@ -252,7 +242,6 @@
       "type": "zone",
       "name": "Private Desert World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched Desert world! Get a fresh supply of beryllium ore, tumbleweeds, and cacti. You'll also find a steady supply of armadillos, scorpions, and sandworms to farm!",
       "image": "shop/biome-desert",
       "zone": {
@@ -265,7 +254,6 @@
       "type": "zone",
       "name": "Private Large Desert World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched Desert world! Get a fresh supply of beryllium ore, tumbleweeds, and cacti. You'll also find a steady supply of armadillos, scorpions, and sandworms to farm!",
       "image": [
         { "sprite": "shop/biome-desert" },
@@ -282,7 +270,6 @@
       "type": "zone",
       "name": "Private Mini Deep World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched Deep world! Find the elusive orange crystal along with an above-average amount of dungeons to raid! Just watch out for those explosive acid pipes!",
       "image": [
         { "sprite": "shop/biome-deep" },
@@ -299,7 +286,6 @@
       "type": "zone",
       "name": "Private Deep World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched Deep world! Find the elusive orange crystal along with an above-average amount of dungeons to raid! Just watch out for those explosive acid pipes!",
       "image": "shop/biome-deep",
       "zone": {
@@ -312,7 +298,6 @@
       "type": "zone",
       "name": "Private Large Deep World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched Deep world! Find the elusive orange crystal along with an above-average amount of dungeons to raid! Just watch out for those explosive acid pipes!",
       "image": [
         { "sprite": "shop/biome-deep" },
@@ -329,7 +314,6 @@
       "type": "zone",
       "name": "Private Mini Brain World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched Brain world! Perfect for the thrill seeker, you'll find an insane amount of brains, green crystals, and earn that coveted Insurrectionist achievement!",
       "image": [
         { "sprite": "shop/biome-brain" },
@@ -346,7 +330,6 @@
       "type": "zone",
       "name": "Private Brain World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched Brain world! Perfect for the thrill seeker, you'll find an insane amount of brains, green crystals, and earn that coveted Insurrectionist achievement!",
       "image": "shop/biome-brain",
       "zone": {
@@ -359,7 +342,6 @@
       "type": "zone",
       "name": "Private Large Brain World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched Brain world! Perfect for the thrill seeker, you'll find an insane amount of brains, green crystals, and earn that coveted Insurrectionist achievement!",
       "image": [
         { "sprite": "shop/biome-brain" },
@@ -376,7 +358,6 @@
       "type": "zone",
       "name": "Private Mini Space World",
       "cost": 250,
-      "category": "worlds",
       "description": "Claim your own untouched SPACE world! This brand new biome has it all - rare platinum, white crystals, custom loots, supernovas, low gravity, and more!",
       "image": [
         { "sprite": "shop/biome-space" },
@@ -393,7 +374,6 @@
       "type": "zone",
       "name": "Private Space World",
       "cost": 500,
-      "category": "worlds",
       "description": "Claim your own untouched SPACE world! This brand new biome has it all - rare platinum, white crystals, custom loots, supernovas, low gravity, and more!",
       "image": "shop/biome-space",
       "zone": {
@@ -406,7 +386,6 @@
       "type": "zone",
       "name": "Private Large Space World",
       "cost": 1000,
-      "category": "worlds",
       "description": "Claim your own untouched SPACE world! This brand new biome has it all - rare platinum, white crystals, custom loots, supernovas, low gravity, and more!",
       "image": [
         { "sprite": "shop/biome-space" },
