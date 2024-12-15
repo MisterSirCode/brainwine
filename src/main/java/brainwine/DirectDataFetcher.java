@@ -82,6 +82,7 @@ public class DirectDataFetcher implements DataFetcher {
                 false,
                 false,
                 false,
+                false,
                 zone.getPlayers().size(),
                 zone.getWidth(),
                 zone.getHeight(),
