@@ -1662,6 +1662,15 @@ public class Zone {
     
     public void setPrivate(boolean value) {
         this.isPrivate = value;
+        
+        // Kick players who shouldn't be here
+        if(value) {
+            for(Player player : getPlayers()) {
+                if(!canJoin(player)) {
+                    player.changeZone(null);
+                }
+            }
+        }
     }
     
     public boolean canJoin(Player player) {
