@@ -82,6 +82,7 @@ public class Zone {
     private float acidity;
     private boolean isPrivate;
     private boolean isProtected;
+    private boolean pvp;
     private String owner;
     private final ChunkManager chunkManager;
     private final SteamManager steamManager;
@@ -1697,6 +1698,19 @@ public class Zone {
         return isProtected;
     }
     
+    public void setPvp(boolean pvp) {
+        this.pvp = pvp;
+        
+        // Force players to reconnect
+        for(Player player : getPlayers()) {
+            player.kick("PvP status changed.", true);
+        } 
+    }
+    
+    public boolean isPvp() {
+        return pvp;
+    }
+    
     public boolean isOwner(Player player) {
         return isOwned() && player.getDocumentId().equals(owner);
     }
@@ -1791,6 +1805,7 @@ public class Zone {
         config.put("protected_player", isProtected(player));
         config.put("owner", isOwner(player));
         config.put("member", isMember(player));
+        config.put("pvp", pvp);
         Map<String, Object> depth = new HashMap<>();
         List<Object> earth = new ArrayList<>();
         

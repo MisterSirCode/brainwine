@@ -79,7 +79,7 @@ public class DirectDataFetcher implements DataFetcher {
         return new ZoneInfo(zone.getName(), 
                 zone.getBiome().getId(), 
                 null,
-                false,
+                zone.isPvp(),
                 false,
                 false,
                 false,
