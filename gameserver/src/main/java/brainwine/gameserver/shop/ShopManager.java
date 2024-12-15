@@ -65,6 +65,7 @@ public class ShopManager {
             // Create product data
             for(Entry<String, Product> entry : products.entrySet()) {
                 Product product = entry.getValue();
+                ProductImage image = product.getImage();
                 
                 // Skip product if it isn't available
                 if(!product.isAvailable()) {
@@ -78,6 +79,15 @@ public class ShopManager {
                 if(data.containsKey("items")) {
                     Map<String, Object> inventoryData = (Map<String, Object>)data.remove("items"); // TODO this is kinda shit
                     inventoryData.forEach((item, quantity) -> MapHelper.appendList(data, "inventory", Arrays.asList(item, quantity)));
+                }
+                
+                // Convert image data
+                if(image != null && data.containsKey("image")) {                    
+                    if(image.isLayered()) {
+                        data.put("images", data.remove("image"));
+                    }
+                    
+                    data.put("image", image.getBaseSprite());
                 }
                 
                 MapHelper.appendList(gameConfig, "shop.items", data);

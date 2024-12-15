@@ -15,15 +15,27 @@
       "name": "Private Worlds",
       "icon": "icon-world",
       "products": [
-        "private-world-multi",
-        "private-world",
         "private-world-small",
+        "private-world",
+        "private-world-large",
+        "private-world-hell-small",
         "private-world-hell",
+        "private-world-hell-large",
+        "private-world-arctic-small",
         "private-world-arctic",
+        "private-world-arctic-large",
+        "private-world-desert-small",
         "private-world-desert",
+        "private-world-desert-large",
+        "private-world-deep-small",
         "private-world-deep",
+        "private-world-deep-large",
+        "private-world-brain-small",
         "private-world-brain",
-        "private-world-space"
+        "private-world-brain-large",
+        "private-world-space-small",
+        "private-world-space",
+        "private-world-space-large"
       ]
     }
   },
@@ -31,9 +43,9 @@
     "giga-protector": {
       "type": "item",
       "name": "Giga Protector",
+      "cost": 225,
       "description": "Protect your creations and valuables from being mined by other players with this giga protector! When placed, it will emit a protective field that protects blocks within a 120 block radius.",
       "image": "inventory/mechanical/dish-giga",
-      "cost": 225,
       "items": {
         "mechanical/dish-giga": 1
       }
@@ -41,9 +53,9 @@
     "mega-protector": {
       "type": "item",
       "name": "Mega Protector",
+      "cost": 125,
       "description": "Protect your creations and valuables from being mined by other players with this mega protector! When placed, it will emit a protective field that protects blocks within a 60 block radius.",
       "image": "inventory/mechanical/dish-mega",
-      "cost": 125,
       "items": {
         "mechanical/dish-mega": 1
       }
@@ -51,9 +63,9 @@
     "large-protector": {
       "type": "item",
       "name": "Large Protector",
+      "cost": 50,
       "description": "Protect your creations and valuables from being mined by other players with this large protector! When placed, it will emit a protective field that protects blocks within a 30 block radius.",
       "image": "inventory/mechanical/dish-large",
-      "cost": 50,
       "items": {
         "mechanical/dish-large": 1
       }
@@ -61,9 +73,9 @@
     "small-protector": {
       "type": "item",
       "name": "Small Protector",
+      "cost": 20,
       "description": "Protect your creations and valuables from being mined by other players with this small protector! When placed, it will emit a protective field that protects blocks within a 15 block radius.",
       "image": "inventory/mechanical/dish",
-      "cost": 20,
       "items": {
         "mechanical/dish": 1
       }
@@ -71,102 +83,340 @@
     "micro-protector-pack": {
       "type": "item",
       "name": "Micro Protector Pack",
+      "cost": 20,
       "description": "Protect your creations and valuables from being mined by other players with these micro protectors! When placed, each dish will emit a protective field that protects blocks within a 5 block radius.",
       "image": "inventory/mechanical/dish-micro",
-      "cost": 20,
       "items": {
         "mechanical/dish-micro": 4
+      }
+    },
+    "private-world-small": {
+      "type": "zone",
+      "name": "Private Mini World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched world! Get all the resources, loot, and exploration you'll ever need. You can even invite friends to come visit and settle with you... or just keep it all to yourself!",
+      "image": [
+        { "sprite": "shop/biome-normal" },
+        { "sprite": "shop/banner", "color": "AAFF66" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "plain",
+        "width": 800,
+        "height": 400
       }
     },
     "private-world": {
       "type": "zone",
       "name": "Private World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched world! Get all the resources, loot, and exploration you'll ever need. You can even invite friends to come visit and settle with you... or just keep it all to yourself!",
       "image": "shop/biome-normal",
-      "cost": 500,
       "zone": {
         "biome": "plain",
         "width": 2000,
         "height": 600
       }
     },
+    "private-world-large": {
+      "type": "zone",
+      "name": "Private Large World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched world! Get all the resources, loot, and exploration you'll ever need. You can even invite friends to come visit and settle with you... or just keep it all to yourself!",
+      "image": [
+        { "sprite": "shop/biome-normal" },
+        { "sprite": "shop/banner", "color": "AAFF66" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "plain",
+        "width": 3000,
+        "height": 800
+      }
+    },
+    "private-world-hell-small": {
+      "type": "zone",
+      "name": "Private Mini Hell World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched Hell world! Get your own expiator, plus a fresh bevy of fire salt, bloodstone, and a never-ending supply of ghostly ectoplasm.",
+      "image": [
+        { "sprite": "shop/biome-hell" },
+        { "sprite": "shop/banner", "color": "FF3311" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "hell",
+        "width": 800,
+        "height": 400
+      }
+    },
     "private-world-hell": {
       "type": "zone",
       "name": "Private Hell World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched Hell world! Get your own expiator, plus a fresh bevy of fire salt, bloodstone, and a never-ending supply of ghostly ectoplasm.",
       "image": "shop/biome-hell",
-      "cost": 500,
       "zone": {
         "biome": "hell",
         "width": 2000,
         "height": 600
       }
     },
+    "private-world-hell-large": {
+      "type": "zone",
+      "name": "Private Large Hell World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched Hell world! Get your own expiator, plus a fresh bevy of fire salt, bloodstone, and a never-ending supply of ghostly ectoplasm.",
+      "image": [
+        { "sprite": "shop/biome-hell" },
+        { "sprite": "shop/banner", "color": "FF3311" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "hell",
+        "width": 3000,
+        "height": 800
+      }
+    },
+    "private-world-arctic-small": {
+      "type": "zone",
+      "name": "Private Mini Arctic World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched Arctic world! Discover sparkly diamonds, ice sculptures, and maybe even the rare jackalope head. Also includes all the snow and ice you'll ever need!",
+      "image": [
+        { "sprite": "shop/biome-arctic" },
+        { "sprite": "shop/banner", "color": "66AAFF" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "arctic",
+        "width": 800,
+        "height": 400
+      }
+    },
     "private-world-arctic": {
       "type": "zone",
       "name": "Private Arctic World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched Arctic world! Discover sparkly diamonds, ice sculptures, and maybe even the rare jackalope head. Also includes all the snow and ice you'll ever need!",
       "image": "shop/biome-arctic",
-      "cost": 500,
       "zone": {
         "biome": "arctic",
         "width": 2000,
         "height": 600
       }
     },
+    "private-world-arctic-large": {
+      "type": "zone",
+      "name": "Private Large Arctic World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched Arctic world! Discover sparkly diamonds, ice sculptures, and maybe even the rare jackalope head. Also includes all the snow and ice you'll ever need!",
+      "image": [
+        { "sprite": "shop/biome-arctic" },
+        { "sprite": "shop/banner", "color": "66AAFF" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "arctic",
+        "width": 3000,
+        "height": 800
+      }
+    },
+    "private-world-desert-small": {
+      "type": "zone",
+      "name": "Private Mini Desert World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched Desert world! Get a fresh supply of beryllium ore, tumbleweeds, and cacti. You'll also find a steady supply of armadillos, scorpions, and sandworms to farm!",
+      "image": [
+        { "sprite": "shop/biome-desert" },
+        { "sprite": "shop/banner", "color": "FFDD77" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "desert",
+        "width": 800,
+        "height": 400
+      }
+    },
     "private-world-desert": {
       "type": "zone",
       "name": "Private Desert World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched Desert world! Get a fresh supply of beryllium ore, tumbleweeds, and cacti. You'll also find a steady supply of armadillos, scorpions, and sandworms to farm!",
       "image": "shop/biome-desert",
-      "cost": 500,
       "zone": {
         "biome": "desert",
         "width": 2000,
         "height": 600
       }
     },
+    "private-world-desert-large": {
+      "type": "zone",
+      "name": "Private Large Desert World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched Desert world! Get a fresh supply of beryllium ore, tumbleweeds, and cacti. You'll also find a steady supply of armadillos, scorpions, and sandworms to farm!",
+      "image": [
+        { "sprite": "shop/biome-desert" },
+        { "sprite": "shop/banner", "color": "FFDD77" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "desert",
+        "width": 3000,
+        "height": 800
+      }
+    },
+    "private-world-deep-small": {
+      "type": "zone",
+      "name": "Private Mini Deep World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched Deep world! Find the elusive orange crystal along with an above-average amount of dungeons to raid! Just watch out for those explosive acid pipes!",
+      "image": [
+        { "sprite": "shop/biome-deep" },
+        { "sprite": "shop/banner", "color": "44334A" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "deep",
+        "width": 600,
+        "height": 500
+      }
+    },
     "private-world-deep": {
       "type": "zone",
       "name": "Private Deep World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched Deep world! Find the elusive orange crystal along with an above-average amount of dungeons to raid! Just watch out for those explosive acid pipes!",
       "image": "shop/biome-deep",
-      "cost": 500,
       "zone": {
         "biome": "deep",
         "width": 1200,
         "height": 1000
       }
     },
+    "private-world-deep-large": {
+      "type": "zone",
+      "name": "Private Large Deep World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched Deep world! Find the elusive orange crystal along with an above-average amount of dungeons to raid! Just watch out for those explosive acid pipes!",
+      "image": [
+        { "sprite": "shop/biome-deep" },
+        { "sprite": "shop/banner", "color": "44334A" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "deep",
+        "width": 1800,
+        "height": 1500
+      }
+    },
+    "private-world-brain-small": {
+      "type": "zone",
+      "name": "Private Mini Brain World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched Brain world! Perfect for the thrill seeker, you'll find an insane amount of brains, green crystals, and earn that coveted Insurrectionist achievement!",
+      "image": [
+        { "sprite": "shop/biome-brain" },
+        { "sprite": "shop/banner", "color": "FF3311" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "brain",
+        "width": 800,
+        "height": 400
+      }
+    },
     "private-world-brain": {
       "type": "zone",
       "name": "Private Brain World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched Brain world! Perfect for the thrill seeker, you'll find an insane amount of brains, green crystals, and earn that coveted Insurrectionist achievement!",
       "image": "shop/biome-brain",
-      "cost": 500,
       "zone": {
         "biome": "brain",
         "width": 2000,
         "height": 600
       }
     },
+    "private-world-brain-large": {
+      "type": "zone",
+      "name": "Private Large Brain World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched Brain world! Perfect for the thrill seeker, you'll find an insane amount of brains, green crystals, and earn that coveted Insurrectionist achievement!",
+      "image": [
+        { "sprite": "shop/biome-brain" },
+        { "sprite": "shop/banner", "color": "FF3311" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "brain",
+        "width": 3000,
+        "height": 800
+      }
+    },
+     "private-world-space-small": {
+      "type": "zone",
+      "name": "Private Mini Space World",
+      "cost": 250,
+      "category": "worlds",
+      "description": "Claim your own untouched SPACE world! This brand new biome has it all - rare platinum, white crystals, custom loots, supernovas, low gravity, and more!",
+      "image": [
+        { "sprite": "shop/biome-space" },
+        { "sprite": "shop/banner", "color": "1A1A1A" },
+        { "sprite": "shop/banner-text-mini" }
+      ],
+      "zone": {
+        "biome": "space",
+        "width": 800,
+        "height": 400
+      }
+    },
     "private-world-space": {
       "type": "zone",
       "name": "Private Space World",
+      "cost": 500,
       "category": "worlds",
       "description": "Claim your own untouched SPACE world! This brand new biome has it all - rare platinum, white crystals, custom loots, supernovas, low gravity, and more!",
       "image": "shop/biome-space",
-      "cost": 500,
       "zone": {
         "biome": "space",
         "width": 2000,
         "height": 600
+      }
+    },
+    "private-world-space-large": {
+      "type": "zone",
+      "name": "Private Large Space World",
+      "cost": 1000,
+      "category": "worlds",
+      "description": "Claim your own untouched SPACE world! This brand new biome has it all - rare platinum, white crystals, custom loots, supernovas, low gravity, and more!",
+      "image": [
+        { "sprite": "shop/biome-space" },
+        { "sprite": "shop/banner", "color": "1A1A1A" },
+        { "sprite": "shop/banner-text-xl" }
+      ],
+      "zone": {
+        "biome": "space",
+        "width": 3000,
+        "height": 800
       }
     }
   }

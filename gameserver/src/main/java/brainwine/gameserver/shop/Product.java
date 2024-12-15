@@ -20,7 +20,7 @@ public abstract class Product {
     protected boolean available = true;
     protected String category = "all";
     protected String description = "No description is available for this product.";
-    protected String image = "inventory/air";
+    protected ProductImage image = new ProductImage("inventory/air");
     
     public Product(String name, int cost) {
         this.name = name;
@@ -49,7 +49,7 @@ public abstract class Product {
         return description;
     }
     
-    public String getImage() {
+    public ProductImage getImage() {
         return image;
     }
 }
