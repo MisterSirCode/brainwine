@@ -53,25 +53,42 @@ public class DirectDataFetcher implements DataFetcher {
     }
     
     @Override
+    public ZoneInfo getZoneInfo(String nameOrId) {
+        Zone zone = zoneManager.getZoneByName(nameOrId);
+        
+        if(zone == null) {
+            zone = zoneManager.getZone(nameOrId);
+        }
+        
+        return zone == null ? null : createZoneInfo(zone);
+    }
+    
+    @Override
     public Collection<ZoneInfo> fetchZoneInfo() {
         List<ZoneInfo> zoneInfo = new ArrayList<>();
         Collection<Zone> zones = zoneManager.getZones();
         
         for(Zone zone : zones) {
-            zoneInfo.add(new ZoneInfo(zone.getName(), 
-                    zone.getBiome().getId(), 
-                    null,
-                    false,
-                    false,
-                    zone.isPrivate(),
-                    zone.isProtected(),
-                    zone.getPlayers().size(), 
-                    zone.getExplorationProgress(), 
-                    zone.getCreationDate(),
-                    zone.getOwner(),
-                    zone.getMembers()));
+            zoneInfo.add(createZoneInfo(zone));
         }
         
         return zoneInfo;
+    }
+    
+    private static ZoneInfo createZoneInfo(Zone zone) {
+        return new ZoneInfo(zone.getName(), 
+                zone.getBiome().getId(), 
+                null,
+                false,
+                false,
+                false,
+                zone.getPlayers().size(),
+                zone.getWidth(),
+                zone.getHeight(),
+                zone.getSurface(),
+                zone.getExplorationProgress(),
+                zone.getCreationDate(),
+                zone.getOwner(),
+                zone.getMembers());
     }
 }

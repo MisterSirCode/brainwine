@@ -52,6 +52,7 @@ import brainwine.gameserver.util.MapHelper;
 import brainwine.gameserver.util.MathUtils;
 import brainwine.gameserver.util.SimplexNoise;
 import brainwine.gameserver.util.Vector2i;
+import brainwine.gameserver.zone.gen.models.RubbleType;
 
 /**
  * TODO Zone class is getting kinda big. I want to split it into more smaller classes to make it more manageable.
@@ -100,6 +101,7 @@ public class Zone {
     private final Map<Integer, MetaBlock> damageFieldBlocks = new HashMap<>();
     private long lastStatusUpdate = System.currentTimeMillis();
     private int ticksElapsed;
+    private boolean modified;
     
     protected Zone(String documentId, ZoneConfigFile config, ZoneDataFile data) {
         this(documentId, config.getName(), config.getBiome(), config.getWidth(), config.getHeight());
@@ -551,38 +553,35 @@ public class Zone {
         }
         
         Block block = getBlock(x, y);
-        Item item = block.getItem(Layer.FRONT);
-        
-        if(item.isDoor() && block.getFrontMod() % 2 == 0) {
-            return true;
-        } else if(!item.isDoor() && item.isSolid()) {
-            return true;
-        }
-        
-        if(checkAdjacents) {
-            for(int i = -3; i <= 0; i++) {
-                for(int j = 0; j <= 2; j++) {
-                    int x1 = x + i;
-                    int y1 = y + j;
-                    
-                    if(!areCoordinatesInBounds(x1, y1) || !isChunkLoaded(x1, y1)) {
-                        continue;
-                    }
-                    
-                    block = getBlock(x1, y1);
-                    item = block.getFrontItem();
-                    
-                    if(item.getBlockWidth() > Math.abs(i) && item.getBlockHeight() > Math.abs(j)
-                            && isBlockSolid(x1, y1, false)) {
-                        return true;
-                    }
+        return block.isSolid() || (checkAdjacents && findBlock(x, y, Block::isSolid) != null);
+    }
+
+    /**
+     * Find block with item occupying the block position that satisfies the predicate.
+     * Closer blocks are prioritized in row major order.
+     */
+    public Block findBlock(int x, int y, Predicate<Block> predicate) {
+        for(int i = 0; i >= -3; i--) {
+            for(int j = 0; j <= 2; j++) {
+                int x1 = x + i;
+                int y1 = y + j;
+
+                if(!areCoordinatesInBounds(x1, y1) || !isChunkLoaded(x1, y1)) {
+                    continue;
+                }
+
+                Block block = getBlock(x1, y1);
+                Item item = block.getFrontItem();
+
+                if(item.getBlockWidth() > Math.abs(i) && item.getBlockHeight() > Math.abs(j) && predicate.test(block)) {
+                    return block;
                 }
             }
         }
-        
-        return false;
+
+        return null;
     }
-    
+
     public boolean isBlockOccupied(int x, int y, Layer layer) {
         if(!areCoordinatesInBounds(x, y)) {
             return false;
@@ -689,13 +688,16 @@ public class Zone {
     }
     
     public void placePrefab(Prefab prefab, int x, int y, Random random, long seed) {
+        placePrefab(prefab, x, y, random, prefab.isMirrorable() && random.nextBoolean(), seed);
+    }
+    
+    public void placePrefab(Prefab prefab, int x, int y, Random random, boolean mirrored, long seed) {
         int width = prefab.getWidth();
         int height = prefab.getHeight();
         Block[] blocks = prefab.getBlocks();
         int guardBlocks = 0;
         String dungeonId = prefab.isDungeon() ? UUID.randomUUID().toString() : null;
         boolean decay = prefab.hasDecay();
-        boolean mirrored = prefab.isMirrorable() && random.nextBoolean();
         Map<Item, Item> replacedItems = new HashMap<>();
         
         // Replacements
@@ -729,8 +731,8 @@ public class Zone {
                 Item backItem = replacedItems.getOrDefault(block.getBackItem(), block.getBackItem());
                 Item frontItem = replacedItems.getOrDefault(block.getFrontItem(), block.getFrontItem());
                 Item liquidItem = replacedItems.getOrDefault(block.getLiquidItem(), block.getLiquidItem());
-                int backMod = block.getBackMod();
-                int frontMod = block.getFrontMod();
+                int backMod = backItem.getMod() == block.getBackItem().getMod() ? block.getBackMod() : 0;
+                int frontMod = frontItem.getMod() == block.getFrontItem().getMod() ? block.getFrontMod() : 0;
                 int liquidMod = block.getLiquidMod();
                 
                 // Update base item if it isn't empty
@@ -760,6 +762,15 @@ public class Zone {
                         }
                     } else if(decay && frontItem.getMod() == ModType.DECAY && random.nextBoolean()) {
                         frontMod = random.nextInt(4) + 1;
+                    }
+                    
+                    // Try to place rubble
+                    if(decay && frontItem.isWhole() && !isBlockOccupied(x + i, y + j - 1, Layer.FRONT) && random.nextDouble() <= 0.2) {
+                        RubbleType[] types = RubbleType.values();
+                        RubbleType type = types[random.nextInt(types.length)];
+                        String[] itemIds = type.getItemIds();
+                        Item item = ItemRegistry.getItem(itemIds[random.nextInt(itemIds.length)]);
+                        updateBlock(x + i, y + j - 1, Layer.FRONT, item);
                     }
                     
                     int offset = mirrored ? -(frontItem.getBlockWidth() - 1) : 0;
@@ -999,6 +1010,7 @@ public class Zone {
         Chunk chunk = getChunk(x, y);        
         chunk.getBlock(x, y).updateLayer(layer, item, mod, owner == null ? 0 : owner.getBlockHash()); // TODO owner hash should get updated on place only!!
         chunk.setModified(true);
+        modified = true; // TODO this alone is NOT sufficient!
         
         // Queue block update if there are players in this zone.
         // TODO maybe check if the block update was in an active chunk, too?
@@ -1041,7 +1053,7 @@ public class Zone {
     }
     
     // TODO better block update methods
-    protected void updateBlockMod(int x, int y, Layer layer, int mod) {
+    public void updateBlockMod(int x, int y, Layer layer, int mod) {
         if(!areCoordinatesInBounds(x, y)) {
             return;
         }
@@ -1742,6 +1754,14 @@ public class Zone {
     
     public boolean isPurified() {
         return acidity < 0.05F;
+    }
+    
+    public void setModified(boolean modified) {
+        this.modified = modified;
+    }
+    
+    public boolean isModified() {
+        return modified;
     }
     
     /**
