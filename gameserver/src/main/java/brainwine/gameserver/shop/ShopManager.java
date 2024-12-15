@@ -38,6 +38,11 @@ public class ShopManager {
         sections.clear();
         products.clear();
         
+        // Clear out default shop config
+        Map<String, Object> gameConfig = GameConfiguration.getBaseConfig();
+        MapHelper.put(gameConfig, "shop.sections", new ArrayList<>());
+        MapHelper.put(gameConfig, "shop.items", new ArrayList<>());
+        
         try {
             URL url = ResourceFinder.getResourceUrl("shop.json");
             Map<String, Object> data = JsonHelper.readValue(url, new TypeReference<Map<String, Object>>(){});
@@ -48,11 +53,6 @@ public class ShopManager {
             return;
         }
         
-        // Create client config
-        Map<String, Object> gameConfig = GameConfiguration.getBaseConfig();
-        MapHelper.put(gameConfig, "shop.sections", new ArrayList<>());
-        MapHelper.put(gameConfig, "shop.items", new ArrayList<>());
-
         try {
             // Create section data
             for(Entry<String, ShopSection> entry : sections.entrySet()) {
@@ -93,7 +93,7 @@ public class ShopManager {
                 MapHelper.appendList(gameConfig, "shop.items", data);
             }
         } catch(Exception e) {
-            e.printStackTrace();
+            logger.error("An error occured while converting shop data", e);
         }
     }
     
