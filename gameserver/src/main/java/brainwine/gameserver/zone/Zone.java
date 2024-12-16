@@ -1611,8 +1611,13 @@ public class Zone {
         return (int)(UUID.fromString(documentId).getMostSignificantBits() >> 32);
     }
     
+    /**
+     * @deprecated DO NOT CALL DIRECTLY.
+     * If you have to rename a zone, please use {@link ZoneManager#renameZone(Zone, String)}.
+     */
     public void setName(String name) {
         this.name = name;
+        kickAllPlayers("Zone name changed.", true);
     }
     
     public String getName() {

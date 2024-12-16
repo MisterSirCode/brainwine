@@ -200,8 +200,32 @@ public class ZoneManager {
         return getZones().stream().allMatch(zone -> zone.getExplorationProgress() >= 0.4);
     }
     
+    /**
+     * Renames the specified zone and re-indexes it.
+     * 
+     * @return {@code true} if the renaming was successful, otherwise {@code false}.
+     */
+    @SuppressWarnings("deprecation")
+    public boolean renameZone(Zone zone, String name) {
+        if(doesZoneExist(name)) {
+            return false; // Return false if name is already taken
+        }
+        
+        if(!zonesByName.remove(zone.getName().toLowerCase(), zone)) {
+            return false; // Sanity check
+        }
+        
+        zone.setName(name);
+        zonesByName.put(name.toLowerCase(), zone);
+        return true;
+    }
+    
     public Zone getZone(String id) {
         return zones.get(id);
+    }
+    
+    public boolean doesZoneExist(String name) {
+        return zonesByName.containsKey(name.toLowerCase());
     }
     
     public Zone getZoneByName(String name) {
