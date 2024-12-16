@@ -27,7 +27,6 @@ public class WorldPublicCommand extends WorldCommand {
         }
         
         zone.setPrivate(!value);
-        player.notify(String.format("Your world has been made %s.", value ? "public" : "private"));
     }
 
     @Override

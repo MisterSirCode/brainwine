@@ -27,7 +27,6 @@ public class WorldPvpCommand extends WorldCommand {
         }
         
         zone.setPvp(value);
-        player.notify(String.format("PvP has been %s.", value ? "enabled" : "disabled"));
     }
 
     @Override

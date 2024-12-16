@@ -293,6 +293,12 @@ public class Zone {
         sendLocalMessage(new EffectMessage(x, y, type, data), x, y);
     }
     
+    public void kickAllPlayers(String reason, boolean shouldReconnect) {
+        for(Player player : getPlayers()) {
+            player.kick(reason, shouldReconnect);
+        }
+    }
+    
     public boolean isPointVisibleFrom(int x1, int y1, int x2, int y2) {
         return raycast(x1, y1, x2, y2) == null;
     }
@@ -1663,15 +1669,7 @@ public class Zone {
     
     public void setPrivate(boolean value) {
         this.isPrivate = value;
-        
-        // Kick players who shouldn't be here
-        if(value) {
-            for(Player player : getPlayers()) {
-                if(!canJoin(player)) {
-                    player.changeZone(null);
-                }
-            }
-        }
+        kickAllPlayers("Accessibility status changed.", true); // The login handler will kick non-members out of the zone if the world is made private
     }
     
     public boolean canJoin(Player player) {
@@ -1688,6 +1686,7 @@ public class Zone {
     
     public void setProtected(boolean value) {
         this.isProtected = value;
+        kickAllPlayers("Protection status changed.", true);
     }
     
     public boolean isProtected(Player player) {
@@ -1700,11 +1699,7 @@ public class Zone {
     
     public void setPvp(boolean pvp) {
         this.pvp = pvp;
-        
-        // Force players to reconnect
-        for(Player player : getPlayers()) {
-            player.kick("PvP status changed.", true);
-        } 
+        kickAllPlayers("PvP status changed.", true); 
     }
     
     public boolean isPvp() {
